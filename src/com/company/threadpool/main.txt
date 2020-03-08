@@ -1,0 +1,14 @@
+    public static void main(String[] args) throws InterruptedException {
+       ParentTask pt = new ParentTask();
+       FutureTask<Void> ft = new FutureTask<Void>(pt,null);
+       TFactory tf = new TFactory();
+        Thread t = tf.newThread(ft);
+        ParentThread parent = (ParentThread)t;
+        parent.start();
+        String[] plist = parent.getChains();
+        System.out.println(parent.getUuid());
+        Thread.sleep(1000);
+        for (int i = 0 ; i < plist.length; i ++) {
+            System.out.println("mainChain = "+plist[i]);
+        }
+    }

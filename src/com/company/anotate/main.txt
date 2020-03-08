@@ -1,0 +1,13 @@
+        Method m = new Method();
+        Class<?> clz = m.getClass();
+        Method mc = new Method();
+        java.lang.reflect.Method[] ms =clz.getMethods();
+        Handler h = ms[0].getAnnotation(Handler.class);
+        System.out.println(h.path());
+        try {
+            ms[0].invoke(mc);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }

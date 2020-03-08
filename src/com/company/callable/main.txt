@@ -1,0 +1,18 @@
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, InterruptedException, ExecutionException {
+	// write your code here
+
+        Callable t = new Parent("adcd") {
+            @Override
+            public Object call() throws Exception {
+                System.out.println(this.uuid);
+                return "Come on";
+            }
+        };
+        FutureTask<Object> tt = new FutureTask<Object>(t);
+        new Thread(tt).run();
+        System.out.println("start");
+        Thread.sleep(2*1000);
+        System.out.println("-------------");
+        System.out.println(tt.get());
+
+    }
