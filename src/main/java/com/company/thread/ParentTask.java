@@ -5,17 +5,15 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
 public class ParentTask implements Runnable {
-    @Override
     public void run() {
         Thread t = Thread.currentThread();
-        ParentThread p = (ParentThread) t;
-        String[] child = p.getChains();
+        final ParentThread p = (ParentThread) t;
+        final String[] child = p.getChains();
         child[0] = "child";
         p.setChains(child);
         System.out.println("child uuid = " + p.getUuid() + "/n");
         Callable ct = new Callable<String[]>(){
 
-            @Override
             public String[] call() throws Exception {
                 String[] gradeChild = p.getChains();
                 child[1] = "gradeChild";
