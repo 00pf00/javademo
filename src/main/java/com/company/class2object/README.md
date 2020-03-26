@@ -1,0 +1,1 @@
+使用construct构造Object
